@@ -1,5 +1,6 @@
 import os
 import json
+from datetime import datetime
 shopStatus = 'on'
 
 def greenText(text : str):
@@ -68,14 +69,22 @@ while True:
 
         elif (commandStrip[0].lower().strip() == 'shop'):
             # print("Shop related command here")
-
+            current_time = datetime.now().strftime("%H:%M:%S")
+            open_time = 3600*8
+            close_time = 3600*20
+            l = current_time.split(":")
+            s = int(l[0])*60*60 + int(l[1])*60 + int(l[2])
             if (commandStrip[1].lower().strip() == 'on'):
                 shopStatus = 'on'
-                print("Shop ON")
+                if open_time <= s <= close_time:
+                    print("Shop ON")
+    
+                # print("Shop ON")
 
             if (commandStrip[1].lower().strip() == 'off'):
                 shopStatus = 'off'
                 print("Shop Off")
+                print("See you next time ")
             
             if (commandStrip[1].lower().strip() == 'status'):
                 # load shop status
