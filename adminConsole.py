@@ -44,11 +44,24 @@ while True:
 
             elif (commandStrip[1].lower().strip() == 'remove'):
                 if '"' in command:
-                    print("Extract Menu Name")
                     quotationIndex = command.index('"')
                     menuName = command[quotationIndex + 1:-1]
-                    menuName = menuName[0:menuName.index('"')]
+                    print(menuName)
+                    try :
+                        menuName = menuName[0:menuName.index('"')]
+                    except :
+                        pass
+                    print(menuName)
+                    fileReadText = ''
 
+                    with open('stock.json','r') as file:
+                        fileReadText = json.load(file)
+                        del fileReadText[menuName]
+
+                    # print(fileReadText)
+                    with open('stock.json','w') as file:
+                        json.dump(fileReadText,file,indent = 4)
+                        print(f'Current Stock : {fileReadText}')
                     print(menuName)
                 else:
                     print("Stock remove invalid")

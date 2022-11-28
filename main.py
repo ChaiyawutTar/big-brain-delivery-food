@@ -1,4 +1,4 @@
-from display.display import *
+from display import *
 if (__name__ == "__main__"):
 
     mainDisplay = Display()
