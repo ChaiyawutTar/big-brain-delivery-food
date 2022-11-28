@@ -1,34 +1,34 @@
 {
     "dish":{
         "ordinary": {
-            "Hainanese Chicken": 99,
-            "Roasted Chicken Rice": 99,
-            "Mixed chicken rice": 99,
-            "Rice with roast duck" : 99,
-            "Barbecued red pork in sauce with rice": 99,
-            "Rice crispy pork" : 99,
-            "Rice with crispy and barbecued pork": 99,
+            "Hainanese Chicken": 40,
+            "Roasted Chicken Rice": 40,
+            "Mixed chicken rice": 50,
+            "Rice with roast duck" : 45,
+            "Barbecued red pork in sauce with rice": 40,
+            "Rice crispy pork" : 45,
+            "Rice with crispy and barbecued pork": 50,
             "Stuffed Bitter Gourd Broth": 50,
-            "clear soup with seaweed and minced pork": 99,
-            "bamboo pulp soup" : 99
+            "clear soup with seaweed and minced pork": 50,
+            "bamboo pulp soup" : 50
         },
         "speacial": {
-            "Hainanese Chicken": 99,
-            "Roasted Chicken Rice": 99,
-            "Mixed chicken rice": 99,
-            "Rice with roast duck" : 99,
-            "Barbecued red pork in sauce with rice": 99,
-            "Rice crispy pork" : 99,
-            "Rice with crispy and barbecued pork": 99
+            "Hainanese Chicken": 50,
+            "Roasted Chicken Rice": 50,
+            "Mixed chicken rice": 60,
+            "Rice with roast duck" : 55,
+            "Barbecued red pork in sauce with rice": 50,
+            "Rice crispy pork" : 55,
+            "Rice with crispy and barbecued pork": 60
         },
     "drink": {
-        "Chrysanthemum Juice": 99,
-        "Longan juice": 99,
-        "Rosella Juice": 99,
-        "Pandan juice": 99,
-        "Iced black tea": 99,
-        "Iced tea": 99,
-        "Iced Pink Milk": 99
+        "Chrysanthemum Juice": 20,
+        "Longan juice": 20,
+        "Rosella Juice": 20,
+        "Pandan juice": 20,
+        "Iced black tea": 20,
+        "Iced tea": 20,
+        "Iced Pink Milk": 20
         }
     }
 }
