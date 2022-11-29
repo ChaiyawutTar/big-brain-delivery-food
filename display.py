@@ -98,7 +98,7 @@ class Display:
                     print(f'  1.{list(dishMenu)[dishChoose - 1]}')
                     print(f'  2.{list(drinkMenu)[drinkChoose - 1]}')
 
-                    print("\nWould be total of ... Baht")
+                    print("\nWould be total of .... Baht")
                     # print(dishDict.keys())
                     # print(drinkDict.keys())
                     
