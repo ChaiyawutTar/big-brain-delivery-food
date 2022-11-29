@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import json
 class User:
     def __init__(self):
@@ -42,6 +41,7 @@ class User:
                 self.username = str(input('Please Enter your username: '))
             self.fname = str(input('Please Enter your first name: '))
             self.lname = str(input('Please Enter your last name: '))
+            self.password = str(input('Please Enter your password: '))
             self.address = str(input('Please Enter your address: '))
             self.district = str(input('Please Enter your district: '))
             self.province = str(input('Please Enter your province: '))
@@ -55,6 +55,8 @@ class User:
                         break
         new_data = {
             self.username: {
+                "fname": self.fname,
+                "lname": self.lname,
                 "password": self.password,
                 "address":
                 {
@@ -64,7 +66,7 @@ class User:
                     "postalcode": self.postalcode
                 },
                 "telephone": self.telephone,
-                "email" : self.email
+                "email": self.email
             }
         }
         with open("user.json", "r") as data_file:
@@ -78,40 +80,3 @@ P1 = User().register()
 
                 
             
-=======
-import os
-
-
-class User:
-
-    def __init__(self,username,password):
-        self.username = username
-        self.password = password
-        self.verified = False
-
-    def order(self):
-        # place some order
-        pass
-
-    def cancel_order(self):
-        # cancel order
-        pass
-    
-    def register(self):
-        # register
-        pass
-
-    def login(self,file):
-        try :
-            found = userdata[self.username]
-            if (password != found['password']):
-                raise
-            print(f"Welcome {userdata[self.username]['fname']}")
-        except Exception as e:
-            os.system('cls') 
-            print("Invalid Login")
-            self.run()
-        pass
-
-    
->>>>>>> c9ddb6a4444855104aa674e1074ef19524a59af3
