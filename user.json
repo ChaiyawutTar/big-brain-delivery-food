@@ -1,7 +1,7 @@
 {
-    "admin":{
-        "fname" : "Chaiyawuth",
-        "lname" : "Dyane Johnson",
+    "admin": {
+        "fname": "Chaiyawuth",
+        "lname": "Dyane Johnson",
         "password": "admin1234",
         "address": {
             "address": "5/6 suriyaheepsop",
@@ -13,8 +13,8 @@
         "email": "santa081831@gmail.com"
     },
     "santa": {
-        "fname":"",
-        "lname":"",
+        "fname": "",
+        "lname": "",
         "password": "santa081831",
         "address": {
             "address": "sa",
@@ -26,8 +26,8 @@
         "email": "s@gmail.com"
     },
     "santatata": {
-        "fname":"",
-        "lname":"",
+        "fname": "",
+        "lname": "",
         "password": "asfasfas",
         "address": {
             "address": "fasfas",
@@ -37,5 +37,18 @@
         },
         "telephone": "asf",
         "email": "f@gmail.com"
+    },
+    "wrqa": {
+        "fname": "qrq",
+        "lname": "rffq",
+        "password": "rfq",
+        "address": {
+            "address": "f",
+            "district": "qf",
+            "province": "qf",
+            "postalcode": "q"
+        },
+        "telephone": "fq",
+        "email": "a@"
     }
 }
