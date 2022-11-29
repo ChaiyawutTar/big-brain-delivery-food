@@ -1,7 +1,7 @@
 import json
 
 class Stock:
-    def __init__(self, ):
+    def __init__(self, ordinary):
         self.dict_stock = {}
         self.ordinary = ordinary
 

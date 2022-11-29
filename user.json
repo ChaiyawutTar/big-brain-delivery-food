@@ -1,14 +1,35 @@
 {
-    "admin":{
+    "admin": {
         "password": "admin1234",
-        "address" : 
-        {
+        "address": {
             "address": "5/6 suriyaheepsop",
-            "district" : "bangkoknoi",
-            "province" : "bangkok",
-            "postal code" : "10700"
+            "district": "bangkoknoi",
+            "province": "bangkok",
+            "postal code": "10700"
         },
         "telephone": "024126838",
-        "email" : "santa081831@gmail.com"
+        "email": "santa081831@gmail.com"
+    },
+    "santa": {
+        "password": "santa081831",
+        "address": {
+            "address": "sa",
+            "district": "sa",
+            "province": "as",
+            "postalcode": "as"
+        },
+        "telephone": "as",
+        "email": "s@gmail.com"
+    },
+    "santatata": {
+        "password": "asfasfas",
+        "address": {
+            "address": "fasfas",
+            "district": "f",
+            "province": "fsadf",
+            "postalcode": "as"
+        },
+        "telephone": "asf",
+        "email": "f@gmail.com"
     }
 }
