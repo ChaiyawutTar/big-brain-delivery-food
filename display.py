@@ -1,25 +1,21 @@
 import json
 import os
-
+import login
+import turtle
 class Display:
+
+    def authUser(self,__username,__password):
+        user1 : login.User() = login.User()
+        user1.authorize({"username":__username,"password":__password})
+        print(user1.getStatus)
+
     def run(self):
         # get user input
         print("Welcome to Big Brain Delivery app")
         print("Please Login")
         username = input("Username : ")
         password = input("Password : ")
-        userdata : dict = {} # load data from json
-        with open("user.json",'r') as user:
-            userdata = json.load(user)
-            # if userdata[username] 
-            try :
-                found = userdata[username]
-                if (password != found['password']):
-                    raise
-                print(f"Welcome {userdata[username]['fname']}")
-            except Exception as e:
-                os.system('cls') 
-                print("Invalid Login")
-                self.run()
-        # while(True):
-            
+        self.authUser(username,password)
+
+    def initTurtle(self):
+        pass
