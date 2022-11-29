@@ -7,7 +7,7 @@ class Stock:
 
 
     def update_stock(self):
-        new_data = 
+        new_data = ""
         with open('stock.json', 'r') as f:
             data =  json.load(f)
             data.update(new_data)

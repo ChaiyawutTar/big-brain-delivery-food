@@ -1,26 +1,16 @@
 {
-    "dish":{
-        "ordinary": {
-            "Hainanese Chicken": 40,
-            "Roasted Chicken Rice": 40,
-            "Mixed chicken rice": 50,
-            "Rice with roast duck" : 45,
-            "Barbecued red pork in sauce with rice": 40,
-            "Rice crispy pork" : 45,
-            "Rice with crispy and barbecued pork": 50,
-            "Stuffed Bitter Gourd Broth": 50,
-            "clear soup with seaweed and minced pork": 50,
-            "bamboo pulp soup" : 50
-        },
-        "speacial": {
-            "Hainanese Chicken": 50,
-            "Roasted Chicken Rice": 50,
-            "Mixed chicken rice": 60,
-            "Rice with roast duck" : 55,
-            "Barbecued red pork in sauce with rice": 50,
-            "Rice crispy pork" : 55,
-            "Rice with crispy and barbecued pork": 60
-        },
+    "dish": {
+        "Hainanese Chicken": 40,
+        "Roasted Chicken Rice": 40,
+        "Mixed chicken rice": 50,
+        "Rice with roast duck": 45,
+        "Barbecued red pork in sauce with rice": 40,
+        "Rice crispy pork": 45,
+        "Rice with crispy and barbecued pork": 50,
+        "Stuffed Bitter Gourd Broth": 50,
+        "clear soup with seaweed and minced pork": 50,
+        "bamboo pulp soup": 50
+    },
     "drink": {
         "Chrysanthemum Juice": 20,
         "Longan juice": 20,
@@ -29,6 +19,5 @@
         "Iced black tea": 20,
         "Iced tea": 20,
         "Iced Pink Milk": 20
-        }
     }
 }
