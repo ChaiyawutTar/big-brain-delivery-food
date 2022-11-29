@@ -4,6 +4,8 @@ class User:
     def __init__(self):
         self.username = str(input('Please Enter your username: '))
         self.password = str(input('Please Enter your password: '))
+        self.fname = ''
+        self.lname = ''
         # self.password = ''
         self.address = ''
         self.telephone = ''
@@ -38,6 +40,8 @@ class User:
             data = json.load(data_file)
             while self.username in data_file:
                 self.username = str(input('Please Enter your username: '))
+            self.fname = str(input('Please Enter your first name: '))
+            self.lname = str(input('Please Enter your last name: '))
             self.address = str(input('Please Enter your address: '))
             self.district = str(input('Please Enter your district: '))
             self.province = str(input('Please Enter your province: '))
