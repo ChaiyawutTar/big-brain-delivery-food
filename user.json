@@ -1,5 +1,11 @@
 {
+<<<<<<< HEAD
     "admin": {
+=======
+    "admin":{
+        "fname" : "Chaiyawuth",
+        "lname" : "Dyane Johnson",
+>>>>>>> c9ddb6a4444855104aa674e1074ef19524a59af3
         "password": "admin1234",
         "address": {
             "address": "5/6 suriyaheepsop",
