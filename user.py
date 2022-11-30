@@ -29,25 +29,34 @@ class User:
             try:
                 # print(userDict)
                 # print(getUser[userDict['username']])
-                self.__userData : dict= getUser[userDict['username']]
-                self.__userData.update({"status":"authorized"})
+                self.__userData : dict = getUser[userDict['username']]
                 if (self.__userData['password'] == userDict['password']):
                     # print("login Completed")
+                    self.__userData.update({"status":"authorized"})
                     pass
                 else:
-                    print("login not complete")
+                    self.__userData.update({"status":"wrongPassword"})
+                    print()
+                    # print("login not complete")
             except:
                 print("Login Error")
 
     @property
-    def getFname(self):
+    def getUsername(self) -> str:
+        try :
+            return self.username
+        except:
+            return ""
+
+    @property
+    def getFname(self) -> str:
         try :
             return self.__userData['fname']
         except:
             return ""
 
     @property
-    def getLname(self):
+    def getLname(self) -> str:
         try :
             return self.__userData['lname']
         except:
@@ -55,7 +64,7 @@ class User:
 
 
     @property
-    def getAddress(self):
+    def getAddress(self) -> str:
         try :
             return self.__userData['address']
         except:
@@ -63,7 +72,7 @@ class User:
 
 
     @property
-    def getStatus(self):
+    def getStatus(self) -> str:
         try :
             return self.__userData['status']
         except:
@@ -71,7 +80,7 @@ class User:
 
 
     @property
-    def isAdmin(self):
+    def isAdmin(self) -> str:
         try :
             return self.__userData['admin']
         except:
