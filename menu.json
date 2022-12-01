@@ -9,7 +9,10 @@
         "Rice with crispy and barbecued pork": 50,
         "Stuffed Bitter Gourd Broth": 50,
         "clear soup with seaweed and minced pork": 50,
-        "bamboo pulp soup": 50
+        "bamboo pulp soup": 50,
+        "Fried Chicken": 30,
+        "Somtum": 35,
+        "Ice Cream": 40
     },
     "drink": {
         "Chrysanthemum Juice": 20,
@@ -18,6 +21,8 @@
         "Pandan juice": 20,
         "Iced black tea": 20,
         "Iced tea": 20,
-        "Iced Pink Milk": 20
+        "Iced Pink Milk": 20,
+        "Cola": 15,
+        "Green Tea": 30
     }
 }

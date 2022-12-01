@@ -2,6 +2,8 @@ from datetime import datetime
 import json
 import os
 import user
+from user import Admin
+from user import Colors
 import turtle
 class Display:
 
@@ -10,6 +12,18 @@ class Display:
         text2 = str(text2)
         output = str(text1) + " " * (length - len(text1) - len(text2)) + str(text2)
         return output
+
+    def greenText(self,text : str):
+        return "\x1B[38;2;0;200;51m"+ text +"\x1b[0m"
+
+    def coloredText(self,text : str,color : Colors) -> str:
+        try:
+            r = color.r
+            g = color.g
+            b = color.b
+            return f"\x1B[38;2;{r};{g};{b}m"+ text +"\x1b[0m"
+        except:
+            return text
     
     def run(self):
         # get user input
@@ -18,6 +32,7 @@ class Display:
         username = input("Username : ")
         password = input("Password : ")
         userDict : dict =  {"username":username,"password":password}
+        # self.userDict = userDict
         user1 : user.User = user.User(userDict)
 
         if (user1.getStatus == "authorized"):
@@ -38,7 +53,7 @@ class Display:
         
         # print(choice)
     
-    def landingPage(self,user : user.Admin,userDict : dict):
+    def landingPage(self,user : Admin,userDict : dict):
         # to be implemented
         print()
         print(f"There are {self.getNumOrders(user)} orders pending")
@@ -48,23 +63,23 @@ class Display:
         print("  2.New Order")
         print("  3.Cancel Order")
         if (user.isAdmin):
-            user = user.Admin(userDict)
+            user = Admin(userDict)
             print("  4.Shop management")
 
         choice = self.choiceSelector(user)
 
         if choice == 1:
             self.viewOrder(user)
-            self.run()
+            self.landingPage(user,userDict)
 
         elif choice == 2:
             self.newOrder(user)
-            self.run()
+            self.landingPage(user,userDict)
 
         elif choice == 3:
             self.viewOrder(user)
             self.cancelOrder(user)
-            self.run()
+            self.landingPage(user,userDict)
 
         elif choice == 4:
             user.adminConsole()
@@ -97,7 +112,7 @@ class Display:
 
     def viewOrder(self,user : user.Admin):
         print()
-        print("Your order details :")
+        print(self.coloredText("Your order details :",Colors().green))
         with open('user.json','r') as userFile:
             userData : dict = json.load(userFile)
             userData : dict = userData[user.getUsername]

@@ -128,15 +128,46 @@ class User:
         with open("user.json", "w") as data_file:
             json.dump(data, data_file, indent = 4)
 
+class Colors:
+
+    def __init__(self,r = 0,g = 0,b = 0) -> None:
+        self.r = r
+        self.g = g
+        self.b = b
+    
+    @property
+    def green(self):
+        return Colors(0,200,51)
+
+    @property
+    def yellow(self):
+        return Colors(253,253,150)
+
 
 class Admin(User):
 
+    
     def __init__(self, userDict: dict):
         super().__init__(userDict)
         self.shopStatus : dict = {"status":self.autoShopStatus,"state" : "Auto"}
 
     def greenText(self,text : str):
         return "\x1B[38;2;0;200;51m"+ text +"\x1b[0m"
+
+    def coloredText(self,text : str,color : Colors) -> str:
+        try:
+            r = color.r
+            g = color.g
+            b = color.b
+            return f"\x1B[38;2;{r};{g};{b}m"+ text +"\x1b[0m"
+        except:
+            return text
+
+    def justifyRight(self,text1 : str,text2 : str,length: int = 35):
+        text1 = str(text1)
+        text2 = str(text2)
+        output = str(text1) + " " * (length - len(text1) - len(text2)) + str(text2)
+        return output
 
     @property
     def autoShopStatus(self) -> str:
@@ -168,23 +199,41 @@ class Admin(User):
 
                     if (commandStrip[1].lower().strip() == 'add'):
                         if '"' in command:
-                            print("Extract Menu Name")
+                            # print("Extract Menu Name")
+                            ####----- stock add category name price amount -----####
                             quotationIndex = command.index('"')
                             menuName = command[quotationIndex + 1:-1]
                             menuName = menuName[0:menuName.index('"')]
-                            number = commandStrip[-1]
-                            print(f'"${menuName}"',number)
-                            fileReadText = ''
+                            category = commandStrip[2].lower()
+                            number = int(commandStrip[-1])
+                            price = int(commandStrip[-2])
+                            # print(f"Cat : '{category}' Name : {menuName} Number : {number} Price : {price}")
+                            # print(f'"${menuName}"',number)
+                            stockUpdate : dict = {}
+                            menuUpdate : dict = {}
 
                             with open('stock.json','r') as file:
-                                fileReadText = json.load(file)
-                                fileReadText.update({menuName:number})
+                                stockUpdate = json.load(file)
+                                stockUpdate.update({menuName:number})
 
-                            # print(fileReadText)
+                            # print(stockUpdate)
                             with open('stock.json','w') as file:
-                                json.dump(fileReadText,file,indent = 4)
-                                print(f'Current Stock : {fileReadText}')
-                                
+                                json.dump(stockUpdate,file,indent = 4)
+                                # print(f'Current Stock : {stockUpdate}')
+
+                            with open('menu.json','r') as file:
+                                menuUpdate = json.load(file)
+                                menuUpdate.update({category:menuUpdate[category] | {menuName:price}})
+
+                            with open('menu.json','w') as file:
+                                json.dump(menuUpdate,file,indent=4)
+
+
+                            # print(menuUpdate)
+                            # print(menuUpdate)
+
+                            # while True:
+                            #     pass    
                             print("Stock add")
                         else:
                             print("Stock add invalid")
@@ -192,25 +241,37 @@ class Admin(User):
 
                     elif (commandStrip[1].lower().strip() == 'remove'):
                         if '"' in command:
+
                             quotationIndex = command.index('"')
                             menuName = command[quotationIndex + 1:-1]
                             print(menuName)
+
                             try :
                                 menuName = menuName[0:menuName.index('"')]
                             except :
                                 pass
+
                             print(menuName)
-                            fileReadText = ''
+
+                            stockUpdate : dict = {}
 
                             with open('stock.json','r') as file:
-                                fileReadText = json.load(file)
-                                del fileReadText[menuName]
+                                stockUpdate = json.load(file)
+                                del stockUpdate[menuName]
+                                stockUpdate.update({menuName:0})
 
-                            # print(fileReadText)
+                            # print(stockUpdate)
                             with open('stock.json','w') as file:
-                                json.dump(fileReadText,file,indent = 4)
-                                print(f'Current Stock : {fileReadText}')
-                            print(menuName)
+                                json.dump(stockUpdate,file,indent = 4)
+                                print(f'Current Stock : {stockUpdate}')
+
+                            menuUpdate : dict = {}
+
+                            # with open('menu.json',"r") as file:
+                            #     menuUpdate = json.load(file)
+
+                            
+                            # print(menuName)
                         else:
                             print("Stock remove invalid")
                             raise
@@ -221,8 +282,10 @@ class Admin(User):
                             fileReadText : dict = json.load(file)
                             stock = fileReadText.items()
                             print(self.greenText("\nCurrent Stock:"))
+                            yellowColor = Colors(253,253,150)
+                            print(f"""  {self.coloredText("Name :",yellowColor)}{" " * (50 - (len("Name") + len("Amount") - 1))}{self.coloredText("Amount",yellowColor)}""")
                             for item in stock:
-                                print(f"\t{item[0]}\t:\t{item[1]}")
+                                print(f"  {self.justifyRight(item[0],item[1],50)}")
                             print()
                             # print(f'Current Stock : {fileReadText}')
                         # print("Stock View")
@@ -249,10 +312,14 @@ class Admin(User):
                         raise
 
                     print(f"Shop status {self.shopStatus['status']} ({self.shopStatus['state']})")
+
+                elif (commandStrip[0].lower().strip() == 'ls'):
+                    os.system('dir')
+
                 elif (command == ""):
                     pass
                 else:
-                    print("Unknown command")
+                    print("Unknown command :",commandStrip[0])
                 
                 
             except Exception as e:
@@ -261,7 +328,7 @@ class Admin(User):
                 pass
                 # print(e)
 
-            if command.lower().strip() == 'clear':
+            if command.lower().strip() == 'clear' or command.lower().strip() == 'cls':
                 os.system('cls')   
 
 # P1 = User().register()
