@@ -1,6 +1,6 @@
 # Big Brain Delivery App
 **By Chaiyawuth**
-## Project Schedule
+## Project Log
 |Date|Work|
 |---|---|
 |27 Nov|Admin Console for Stock add and Store Open and close|
