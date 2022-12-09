@@ -4,7 +4,8 @@ class Menu:
         self.menu = menu # class of stock (คลาสที่ add dict of object เข้ามา)
     
     def dish(self):
-        self.
+        # self.
+        pass
     
     def show_menu(self):
         return self.menu

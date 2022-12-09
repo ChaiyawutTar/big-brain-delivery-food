@@ -1,43 +1,25 @@
 from datetime import datetime
 import json
 import os
-class User:
+from stock import Stock
+class User(Stock):
 
     def __init__(self,userDict : dict):
         self.username = userDict['username']
         self.password = userDict['password']
-        self.fname = ''
-        self.lname = ''
-        # self.password = ''
-        self.address = ''
-        self.telephone = ''
-        self.email = ''
         self.__userData : dict = {"status":"unauthorized"}
-        self.authorize(userDict)
+        self.login(userDict)
 
-    def login(self):
-        with open("user.json", "r") as user_file:
-            user = json.load(user_file)
-        if self.username not in user:
-            User(self).register(self)
-        else:
-            print('ok')
-
-    def authorize(self,userDict : dict):
+    def login(self,userDict : dict):
         with open("user.json",'r') as file:
-            getUser = json.load(file)
+            getUser : dict = json.load(file)
             try:
-                # print(userDict)
-                # print(getUser[userDict['username']])
                 self.__userData : dict = getUser[userDict['username']]
                 if (self.__userData['password'] == userDict['password']):
-                    # print("login Completed")
                     self.__userData.update({"status":"authorized"})
-                    pass
                 else:
                     self.__userData.update({"status":"wrongPassword"})
                     print()
-                    # print("login not complete")
             except:
                 print("Login Error")
 
@@ -62,14 +44,12 @@ class User:
         except:
             return ""
 
-
     @property
     def getAddress(self) -> str:
         try :
             return self.__userData['address']
         except:
             return ""
-
 
     @property
     def getStatus(self) -> str:
@@ -78,7 +58,6 @@ class User:
         except:
             return ""
 
-
     @property
     def isAdmin(self) -> str:
         try :
@@ -86,15 +65,13 @@ class User:
         except:
             return ""
 
-
-
     def register(self):
         with open("user.json", "r") as data_file:
             data = json.load(data_file)
-            # self.username = str(input('Please Enter your username: '))
+            self.username = str(input('Please Enter your username: '))
             self.fname = str(input('Please Enter your first name: '))
             self.lname = str(input('Please Enter your last name: '))
-            # self.password = str(input('Please Enter your password: '))
+            self.password = str(input('Please Enter your password: '))
             self.address = str(input('Please Enter your address: '))
             self.district = str(input('Please Enter your district: '))
             self.province = str(input('Please Enter your province: '))
@@ -122,46 +99,20 @@ class User:
                 "email": self.email
             }
         }
+        self.new_user_add(new_data)
+
+    def new_user_add(new_data : dict):
         with open("user.json", "r") as data_file:
-            data = json.load(data_file)
+            data : dict = json.load(data_file)
             data.update(new_data)
         with open("user.json", "w") as data_file:
             json.dump(data, data_file, indent = 4)
 
-class Colors:
-
-    def __init__(self,r = 0,g = 0,b = 0) -> None:
-        self.r = r
-        self.g = g
-        self.b = b
-    
-    @property
-    def green(self):
-        return Colors(0,200,51)
-
-    @property
-    def yellow(self):
-        return Colors(253,253,150)
-
-
 class Admin(User):
 
-    
     def __init__(self, userDict: dict):
         super().__init__(userDict)
         self.shopStatus : dict = {"status":self.autoShopStatus,"state" : "Auto"}
-
-    def greenText(self,text : str):
-        return "\x1B[38;2;0;200;51m"+ text +"\x1b[0m"
-
-    def coloredText(self,text : str,color : Colors) -> str:
-        try:
-            r = color.r
-            g = color.g
-            b = color.b
-            return f"\x1B[38;2;{r};{g};{b}m"+ text +"\x1b[0m"
-        except:
-            return text
 
     def justifyRight(self,text1 : str,text2 : str,length: int = 35):
         text1 = str(text1)
@@ -193,6 +144,7 @@ class Admin(User):
                 break
 
             commandStrip = command.split(" ")
+            
             try:
                 if (commandStrip[0].lower().strip() == 'stock'):
                     # print("Stock related command here")
@@ -278,12 +230,11 @@ class Admin(User):
                     
                     elif (commandStrip[1].lower().strip() == 'view'):
                         # Load Stock JSON
-                        with open('stock.json','r') as file:
-                            fileReadText : dict = json.load(file)
+                            fileReadText = super().get_stock()
                             stock = fileReadText.items()
-                            print(self.greenText("\nCurrent Stock:"))
-                            yellowColor = Colors(253,253,150)
-                            print(f"""  {self.coloredText("Name :",yellowColor)}{" " * (50 - (len("Name") + len("Amount") - 1))}{self.coloredText("Amount",yellowColor)}""")
+                            print("\nCurrent Stock:")
+                            # print(f"""  {self.coloredText("Name :",yellowColor)}{" " * (50 - (len("Name") + len("Amount") - 1))}{self.coloredText("Amount",yellowColor)}""")
+                            # print()
                             for item in stock:
                                 print(f"  {self.justifyRight(item[0],item[1],50)}")
                             print()
@@ -318,6 +269,7 @@ class Admin(User):
 
                 elif (command == ""):
                     pass
+
                 else:
                     print("Unknown command :",commandStrip[0])
                 
