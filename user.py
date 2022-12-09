@@ -65,6 +65,8 @@ class User(Stock):
         except:
             return ""
 
+    
+
     def register(self):
         with open("user.json", "r") as data_file:
             data = json.load(data_file)
@@ -101,7 +103,7 @@ class User(Stock):
         }
         self.new_user_add(new_data)
 
-    def new_user_add(new_data : dict):
+    def new_user_add(self,new_data : dict):
         with open("user.json", "r") as data_file:
             data : dict = json.load(data_file)
             data.update(new_data)
@@ -133,8 +135,30 @@ class Admin(User):
         else:
             # print("Auto Shop OFF")
             return "off"
+
+    @property
+    def get_user_list(self):
+        with open("user.json",'r') as file:
+            userList : dict = json.load(file)
+            return list(userList.keys())
+
+
+    def get_user_order(self,user : str) -> list:
+        try:
+            with open("user.json",'r') as file:
+                userList : dict = json.load(file)
+                return userList[user]['orders']
+        except:
+            return []
+
+    def isAdmin(self,user : str) -> str:
+        try :
+            with open("user.json", "r") as data_file:
+                file_content = json.load(data_file)
+                return file_content[user]['admin']
+        except:
+            return False
         
-    #----------------- To be moved to other places -----------------#
     def adminConsole(self):
         while True:
             command : str = input("admin@bigBrainCompany: ")

@@ -16,7 +16,7 @@
     "santa": {
         "fname": "",
         "lname": "",
-        "admin": true,
+        "admin": false,
         "password": "santa081831",
         "address": {
             "address": "sa",
@@ -30,7 +30,7 @@
     "santatata": {
         "fname": "",
         "lname": "",
-        "admin": true,
+        "admin": false,
         "password": "asfasfas",
         "address": {
             "address": "fasfas",
@@ -58,7 +58,7 @@
     "a": {
         "fname": "Nontawat",
         "lname": "Dienwieng",
-        "admin": false,
+        "admin": true,
         "password": "a",
         "address": {
             "address": "somewhere",
@@ -128,6 +128,31 @@
                 ],
                 "drink": [
                     "Iced black tea"
+                ]
+            }
+        ]
+    },
+    "b": {
+        "fname": "b",
+        "lname": "b",
+        "admin": false,
+        "password": "b",
+        "address": {
+            "address": "b",
+            "district": "b",
+            "province": "b",
+            "postalcode": "1"
+        },
+        "telephone": "1",
+        "email": "b@b",
+        "orders": [
+            {
+                "orderNo": "014316867727",
+                "dish": [
+                    "Mixed chicken rice"
+                ],
+                "drink": [
+                    "Rosella Juice"
                 ]
             }
         ]

@@ -1,34 +1,13 @@
 from datetime import datetime
 import json
 import os
+from color import Colors
 from stock import Stock
 import user
 from user import Admin
 import turtle
 
-class Color:
 
-    def __init__(self,r = 0,g = 0,b = 0) -> None:
-            self.r = r
-            self.g = g
-            self.b = b
-
-    def greenText(self,text : str):
-        return "\x1B[38;2;0;200;51m"+ text +"\x1b[0m"
-    
-    def coloredText(self,text : str,color) -> str:
-        try:
-            r = color.r
-            g = color.g
-            b = color.b
-            return f"\x1B[38;2;{r};{g};{b}m"+ text +"\x1b[0m"
-        except:
-            return text
-            
-class Colors:
-
-   green = Color(0,200,51)
-   yellow = Color(253,253,150)
 
 class Display(Stock):
 
@@ -53,6 +32,10 @@ class Display(Stock):
         except:
             return text
     
+    # def run(self):
+    #     self.graphic_interface()
+
+
     def run(self):
         # get user input
         print("Welcome to Big Brain Delivery app")
@@ -93,6 +76,7 @@ class Display(Stock):
         if (user.isAdmin):
             user = Admin(userDict)
             print("  4.Shop management")
+            self.graphic_interface(user)
 
         choice = self.choiceSelector(user)
 
@@ -128,5 +112,57 @@ class Display(Stock):
                 print(e)
                 print("Please enter a valid intiger")
         
-    def initTurtle(self):
-        pass
+    def graphic_interface(self,admin):
+        screen = turtle.Screen()
+        screen.setup(600,600)
+        # username = turtle.textinput("Admin Console Login","Enter admin username")
+        # password = turtle.textinput("Admin Console Login","Enter admin password")
+        # user_form : dict = {
+        #     "username" : username,
+        #     "password" : password
+        # }
+
+        titleStyle = ("Arial",30)
+        normalStyle = ("Arial",20)
+        dataStyle = ("Arial",11)
+
+
+        if admin.getStatus == "authorized": # Check if authorized
+            screen.tracer(0)
+            turtle.speed(0)
+            turtle.penup()
+            turtle.goto(80 - 250,230)
+            turtle.write("Big Brain Delivery",font=titleStyle)
+            turtle.goto(40 - 300,200)
+            # turtle.begin_fill()
+            # turtle.fillcolor("light green")
+            # for i in range(2):
+            #     turtle.forward(600 - 80)
+            #     turtle.right(90)
+            #     turtle.forward(600 - 160)
+            #     turtle.right(90)
+            turtle.goto(20 - 300,180)
+            user_items : list = admin.get_user_list
+            user_list : list = []
+            for i in user_items:
+                if not admin.isAdmin(i):
+                    user_list.append(i)
+
+            for i in range(len(list(user_list))):
+                posX = 20 - 300
+                posY = 180 - 60 * i
+                order_list = admin.get_user_order(user_list[i])
+                turtle.goto(posX,posY)
+                order_text = ""
+                turtle.write(user_list[i],font=normalStyle)
+                posY -= 60 * len(order_list)
+                turtle.goto(posX,posY)
+                for i in order_list:
+                    order_text += f"  Order {i['orderNo']}\n"
+                    order_text += f"\t{i['dish'][0]}\n"
+                    order_text += f"\t{i['drink'][0]}\n"
+                turtle.write(order_text,font=dataStyle)
+            # turtle.end_fill()
+
+        turtle.exitonclick()
+
