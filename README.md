@@ -19,6 +19,8 @@ This project is based on ... classes
 
 
 
+login ถ้าเป็น แอดมินให้โชว์
+ตอนสั่งเช็คอยู่แค่ เมนู อย่า เช็คในสต็อก(ตอนจะสั่ง order ของ user)
 
 ## Program Design
 ## Code Structure

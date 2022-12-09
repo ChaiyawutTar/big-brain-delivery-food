@@ -84,5 +84,19 @@
         "telephone": "",
         "email": "mail@mail.com",
         "orders": []
+    },
+    "santa0818313336": {
+        "fname": "chaiyawut",
+        "lname": "thengket",
+        "admin": false,
+        "password": "santa0899953288",
+        "address": {
+            "address": "sa",
+            "district": "fa",
+            "province": "t",
+            "postalcode": "af"
+        },
+        "telephone": "sf",
+        "email": "santa081831@gmail.com"
     }
 }
