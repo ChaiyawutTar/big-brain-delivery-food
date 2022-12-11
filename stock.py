@@ -77,6 +77,23 @@ class Stock:
         with open('user.json','w') as userFile:
             json.dump(reWriteData,userFile,indent=4)
 
+    def deliver_order(self,user):
+        try :
+            orderData : list = 0
+            reWriteData : dict = 0
+            with open('user.json','r') as userFile:
+                userData : dict = json.load(userFile)
+                reWriteData = userData
+                userData : dict = userData[user]
+                del reWriteData[user]['orders']
+                
+            with open('user.json','w') as userFile:
+                json.dump(reWriteData,userFile,indent=4)
+        except KeyError:
+            print("User has no orders")
+
+        except :
+            print("Error")
     
     def new_order(self,user):
         

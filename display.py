@@ -76,7 +76,7 @@ class Display(Stock):
         if (user.isAdmin):
             user = Admin(userDict)
             print("  4.Shop management")
-            self.graphic_interface(user)
+            print("  5.Orders management")
 
         choice = self.choiceSelector(user)
 
@@ -95,6 +95,11 @@ class Display(Stock):
 
         elif choice == 4:
             user.adminConsole()
+            self.landingPage(user,userDict)
+
+        elif choice == 5:
+            self.graphic_interface(user)
+            self.landingPage(user,userDict)
     
 
     def choiceSelector(self,user : user.Admin) -> int:
@@ -102,18 +107,35 @@ class Display(Stock):
         while True:
             try:
                 choice = int(input("Your Choice : "))
-                if choice > 3 + user.isAdmin or choice <= 0:
-                    raise
-                return int(choice)
+                if 1 <= choice <= 5:
+                    return int(choice)
+                raise ValueError
 
             except KeyboardInterrupt:
                 exit()
             except Exception as e:
                 print(e)
                 print("Please enter a valid intiger")
-        
+
+    def on_click(self,x,y):
+        for index in range(len(self.buttonPosX)):
+            if (self.buttonPosX[index] < x < self.buttonPosX[index] + 150):
+                if (self.buttonPosY[index] < y < self.buttonPosY[index] + 30):
+                    # print("In Button",index)
+                    # p
+                    user_items : list = self.admin.get_user_list
+                    user_list : list = []
+                    for i in user_items:
+                        if not self.admin.isAdmin(i):
+                            user_list.append(i)
+                    print(user_list[index])
+                    super().deliver_order(user_list[index])
+                    self.graphic_interface(self.admin)
+
     def graphic_interface(self,admin):
+        self.admin = admin
         screen = turtle.Screen()
+        screen.clearscreen()
         screen.setup(600,600)
         # username = turtle.textinput("Admin Console Login","Enter admin username")
         # password = turtle.textinput("Admin Console Login","Enter admin password")
@@ -126,7 +148,8 @@ class Display(Stock):
         normalStyle = ("Arial",20)
         dataStyle = ("Arial",11)
 
-
+        self.buttonPosY = []
+        self.buttonPosX = []
         if admin.getStatus == "authorized": # Check if authorized
             screen.tracer(0)
             turtle.speed(0)
@@ -148,21 +171,58 @@ class Display(Stock):
                 if not admin.isAdmin(i):
                     user_list.append(i)
 
+            posY = 180
             for i in range(len(list(user_list))):
                 posX = 20 - 300
-                posY = 180 - 60 * i
                 order_list = admin.get_user_order(user_list[i])
+                self.buttonPosY.append(posY)
+                self.buttonPosX.append(posX + len(user_list[i]) * 15)
+                turtle.goto(posX,posY)
+                turtle.write(user_list[i],font=normalStyle)
+                turtle.goto(posX + len(user_list[i]) * 15,posY)
+                
+                turtle.begin_fill()
+                turtle.fillcolor("dark green")
+                # turtle.penup()
+                for i in range(2):
+                    turtle.forward(150)
+                    turtle.left(90)
+                    turtle.forward(30)
+                    turtle.left(90)
+                turtle.end_fill()
+                turtle.pencolor("white")
+                turtle.write("Click to Deliver",font=("Arial",14))
+                turtle.pencolor("black")
+
                 turtle.goto(posX,posY)
                 order_text = ""
-                turtle.write(user_list[i],font=normalStyle)
-                posY -= 60 * len(order_list)
+                # posY -= 30
                 turtle.goto(posX,posY)
-                for i in order_list:
-                    order_text += f"  Order {i['orderNo']}\n"
-                    order_text += f"\t{i['dish'][0]}\n"
-                    order_text += f"\t{i['drink'][0]}\n"
-                turtle.write(order_text,font=dataStyle)
-            # turtle.end_fill()
+                if (len(order_list) != 0):
+                    posY -= dataStyle[1] * 1.6
+                    posY -= dataStyle[1] * 3 * 1.6 * len(order_list)
+                    turtle.goto(posX,posY)
+                    for i in order_list:
+                        order_text += f"  Order {i['orderNo']}\n"
+                        order_text += f"\t{i['dish'][0]}\n"
+                        order_text += f"\t{i['drink'][0]}\n"
+                    turtle.write(order_text,font=dataStyle)
+                    
+                    # turtle.pendown()
+                    turtle.goto(posX,posY)
+                else:
+                    posY -= dataStyle[1] * 1.6
+                    turtle.goto(posX,posY)
+                    turtle.write("  No orders",font=dataStyle)
+                
+                posY -= titleStyle[1] * 1.3
 
-        turtle.exitonclick()
+    
+        
+            
+
+            
+            # turtle.end_fill()
+        screen.onclick(self.on_click)
+        screen.mainloop()
 
