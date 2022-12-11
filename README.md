@@ -19,15 +19,15 @@ I will give user. Enter username, first name, lastname, passward, address, distr
 Next ,let login Enter you username and passward
 if you are user, you have 3 choices.
 
-first -> 1.View order
-    If you haven't ordered food yet(not yet New order), you must order food first.
-    I will show your order number and you orders that you have ordered.
+    first -> 1.View order
+        If you haven't ordered food yet(not yet New order), you must order food first.
+        I will show your order number and you orders that you have ordered.
     
-second -> 2.New order
-    I will show you order in my stocks and give you a price of anty dish.
+    second -> 2.New order
+        I will show you order in my stocks and give you a price of anty dish.
         choose you dish -> Enter number of that dish.
         choose you drink -> Enter number of that drink.
-    and you confirm you order.
+        and you confirm you order.
     
 third -> 3.Cancel order
     If you haven't ordered food yet(not yet New order), you must order food first.
