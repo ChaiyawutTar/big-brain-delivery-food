@@ -37,25 +37,25 @@ if you are user, you have 3 choices.
     if you are admin, you have 5 choices but you can not choose choice 1 and 2 because you are admin.
     fourth -> 4. Shop management
     this have any command. This command is like git hub. Ex.git add -A , git push .....
-    1.exit -> break you program.
-    
-    2.stock -> command about stock.
-        stock dish add menu number price -> add stock dish with name of menu number and price.
-        Ex. stock dish add kitkat 5 10
-        
-        stock dish add menu number price -> add stock drink with name of menu number and price.
-        Ex. stock drink add NamDang 10 10
-        
-        stock view -> view admin stock.
-        
-        stock remove -> decreasing number of the food to 0.
-        Ex. stock remove "kit kat"
-        
-    3.shop -> This common indicates the status of the program. 
-    Basically, the program is set to run from 8am to 8pm.
-        shop auto -> setting this program to open on time.
-        shop on -> setting this program to open and change to manual.
-        shop off -> setting this program to close and change to manual.
+        1.exit -> break you program.
+
+        2.stock -> command about stock.
+            stock dish add menu number price -> add stock dish with name of menu number and price.
+            Ex. stock dish add kitkat 5 10
+
+            stock dish add menu number price -> add stock drink with name of menu number and price.
+            Ex. stock drink add NamDang 10 10
+
+            stock view -> view admin stock.
+
+            stock remove -> decreasing number of the food to 0.
+            Ex. stock remove "kit kat"
+
+        3.shop -> This common indicates the status of the program. 
+        Basically, the program is set to run from 8am to 8pm.
+            shop auto -> setting this program to open on time.
+            shop on -> setting this program to open and change to manual.
+            shop off -> setting this program to close and change to manual.
         
 fifth -> 5.Order management
     this have display on turtle. I will show all of user who have orders and If I click to Deliver, this program will sent food to user who orders.
