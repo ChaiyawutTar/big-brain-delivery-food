@@ -68,35 +68,7 @@
         },
         "telephone": "0212312123",
         "email": "whatmail@whatmail.com",
-        "orders": [
-            {
-                "orderNo": "101533805291",
-                "dish": [
-                    "Ice Cream"
-                ],
-                "drink": [
-                    "Matcha"
-                ]
-            },
-            {
-                "orderNo": "230755663223",
-                "dish": [
-                    "Roasted Chicken Rice"
-                ],
-                "drink": [
-                    "Longan juice"
-                ]
-            },
-            {
-                "orderNo": "231701556425",
-                "dish": [
-                    "Roasted Chicken Rice"
-                ],
-                "drink": [
-                    "Longan juice"
-                ]
-            }
-        ]
+        "orders": []
     },
     "bipoe": {
         "fname": "Steveie",
@@ -110,27 +82,7 @@
             "postalcode": ""
         },
         "telephone": "",
-        "email": "mail@mail.com",
-        "orders": [
-            {
-                "orderNo": "221327371724",
-                "dish": [
-                    "Ice Cream"
-                ],
-                "drink": [
-                    "Iced tea"
-                ]
-            },
-            {
-                "orderNo": "221341551029",
-                "dish": [
-                    "Rice with roast duck"
-                ],
-                "drink": [
-                    "Iced black tea"
-                ]
-            }
-        ]
+        "email": "mail@mail.com"
     },
     "b": {
         "fname": "b",
@@ -144,17 +96,6 @@
             "postalcode": "1"
         },
         "telephone": "1",
-        "email": "b@b",
-        "orders": [
-            {
-                "orderNo": "014316867727",
-                "dish": [
-                    "Mixed chicken rice"
-                ],
-                "drink": [
-                    "Rosella Juice"
-                ]
-            }
-        ]
+        "email": "b@b"
     }
 }
