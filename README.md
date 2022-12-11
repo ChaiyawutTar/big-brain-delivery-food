@@ -34,17 +34,17 @@ if you are user, you have 3 choices.
         I will show your order number and you orders that you have ordered.
         choose your orders that you want to cancel.
     
-    if you are admin, you have 5 choices but you can not choose choice 1 and 2 because you are admin.
+    if you are admin, you have 5 choices but you can not choose choice 1, 2 and 3 because you are admin.
     fourth -> 4. Shop management
     this have any command. This command is like git hub. Ex.git add -A , git push .....
         1.exit -> break you program.
 
         2.stock -> command about stock.
-            stock dish add menu number price -> add stock dish with name of menu number and price.
-            Ex. stock dish add kitkat 5 10
+            stock add dish "menu" number price -> add stock dish with name of menu number and price.
+            Ex. stock add dish "KitKat" 5 10
 
-            stock dish add menu number price -> add stock drink with name of menu number and price.
-            Ex. stock drink add NamDang 10 10
+            stock add drink "menu" number price  -> add stock drink with name of menu number and price.
+            Ex. stock add drink "Namdang" 10 10
 
             stock view -> view admin stock.
 
