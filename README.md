@@ -18,37 +18,48 @@ If you have already registered, you will be able to choose to order food. If not
 I will give user. Enter username, first name, lastname, passward, address, district, province, postal code, telephone, email.
 Next ,let login Enter you username and passward
 if you are user, you have 3 choices.
+
 first -> 1.View order
     If you haven't ordered food yet(not yet New order), you must order food first.
     I will show your order number and you orders that you have ordered.
+    
 second -> 2.New order
     I will show you order in my stocks and give you a price of anty dish.
         choose you dish -> Enter number of that dish.
         choose you drink -> Enter number of that drink.
     and you confirm you order.
+    
 third -> 3.Cancel order
     If you haven't ordered food yet(not yet New order), you must order food first.
     I will show your order number and you orders that you have ordered.
     choose your orders that you want to cancel.
+    
 if you are admin, you have 5 choices but you can not choose choice 1 and 2 because you are admin.
 fourth -> 4. Shop management
     this have any command. This command is like git hub. Ex.git add -A , git push .....
     1.exit -> break you program.
+    
     2.stock -> command about stock.
         stock dish add menu number price -> add stock dish with name of menu number and price.
         Ex. stock dish add kitkat 5 10
+        
         stock dish add menu number price -> add stock drink with name of menu number and price.
         Ex. stock drink add NamDang 10 10
+        
         stock view -> view admin stock.
+        
         stock remove -> decreasing number of the food to 0.
         Ex. stock remove "kit kat"
+        
     3.shop -> This common indicates the status of the program. 
     Basically, the program is set to run from 8am to 8pm.
         shop auto -> setting this program to open on time.
         shop on -> setting this program to open and change to manual.
         shop off -> setting this program to close and change to manual.
+        
 fifth -> 5.Order management
     this have display on turtle. I will show all of user who have orders and If I click to Deliver, this program will sent food to user who orders.
+    
 ## Required Library and Tools
 - Turtle
 - json
