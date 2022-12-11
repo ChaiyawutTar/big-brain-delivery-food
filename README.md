@@ -57,8 +57,8 @@ if you are user, you have 3 choices.
             shop on -> setting this program to open and change to manual.
             shop off -> setting this program to close and change to manual.
         
-fifth -> 5.Order management
-    this have display on turtle. I will show all of user who have orders and If I click to Deliver, this program will sent food to user who orders.
+    fifth -> 5.Order management
+        this have display on turtle. I will show all of user who have orders and If I click to Deliver, this program will sent food to user who orders.
     
 ## Required Library and Tools
 - Turtle
