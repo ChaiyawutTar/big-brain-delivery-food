@@ -9,6 +9,7 @@
 |30 Nov|Finish up login, View, New, Cancel order|
 |1 Dec|Linking between stock and menu|
 |10 Dec|Day 1 of adding GUI and moving functions <br> and method to the place where it should be|
+|11 Dec|Making UI deliver order to the user|
 ## Overview
 This project is based on ... classes
 
