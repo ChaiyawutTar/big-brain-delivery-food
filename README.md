@@ -29,13 +29,13 @@ if you are user, you have 3 choices.
         choose you drink -> Enter number of that drink.
         and you confirm you order.
     
-third -> 3.Cancel order
-    If you haven't ordered food yet(not yet New order), you must order food first.
-    I will show your order number and you orders that you have ordered.
-    choose your orders that you want to cancel.
+    third -> 3.Cancel order
+        If you haven't ordered food yet(not yet New order), you must order food first.
+        I will show your order number and you orders that you have ordered.
+        choose your orders that you want to cancel.
     
-if you are admin, you have 5 choices but you can not choose choice 1 and 2 because you are admin.
-fourth -> 4. Shop management
+    if you are admin, you have 5 choices but you can not choose choice 1 and 2 because you are admin.
+    fourth -> 4. Shop management
     this have any command. This command is like git hub. Ex.git add -A , git push .....
     1.exit -> break you program.
     
