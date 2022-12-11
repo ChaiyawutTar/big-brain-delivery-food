@@ -216,12 +216,6 @@ class Display(Stock):
                     turtle.write("  No orders",font=dataStyle)
                 
                 posY -= titleStyle[1] * 1.3
-
-    
-        
-            
-
-            
             # turtle.end_fill()
         screen.onclick(self.on_click)
         screen.mainloop()

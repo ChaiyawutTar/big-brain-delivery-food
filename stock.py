@@ -16,20 +16,20 @@ class Stock:
         #     data = csv.DictReader
         
     def get_menulist(self):
-        with open('stock.json','r') as file:
+        with open('stock.json', 'r') as file:
             return json.load(file) 
 
     def get_amount(self):
         pass
 
     def get_stock(self):
-        with open('stock.json','r') as file:
+        with open('stock.json', 'r') as file:
             return json.load(file) 
 
-    def update_order_stock(self,user, ordersMenu : dict):
+    def update_order_stock(self, user, ordersMenu : dict):
         
         userData : dict = {}
-        with open('user.json','r') as userFile:
+        with open('user.json', 'r') as userFile:
             userData = json.load(userFile)
             orderDict : dict = {
                 "orderNo":str(datetime.now()).split()[1].replace(":","").replace(".",""),
@@ -46,9 +46,9 @@ class Stock:
             # print(userData)
         
         with open('user.json','w') as userFile:
-            json.dump(userData,userFile,indent=4)
+            json.dump(userData, userFile,indent=4)
     
-    def cancel_order(self,user):
+    def cancel_order(self, user):
         
         orderData : list = 0
         reWriteData : dict = 0
@@ -74,10 +74,10 @@ class Stock:
                 except Exception as e:
                     print("Exception from cancel :",e)
 
-        with open('user.json','w') as userFile:
-            json.dump(reWriteData,userFile,indent=4)
+        with open('user.json', 'w') as userFile:
+            json.dump(reWriteData, userFile, indent=4)
 
-    def deliver_order(self,user):
+    def deliver_order(self, user):
         try :
             orderData : list = 0
             reWriteData : dict = 0
@@ -87,15 +87,15 @@ class Stock:
                 userData : dict = userData[user]
                 del reWriteData[user]['orders']
                 
-            with open('user.json','w') as userFile:
-                json.dump(reWriteData,userFile,indent=4)
+            with open('user.json', 'w') as userFile:
+                json.dump(reWriteData, userFile, indent=4)
         except KeyError:
             print("User has no orders")
 
         except :
             print("Error")
     
-    def new_order(self,user):
+    def new_order(self, user):
         
         if (user.isAdmin):
             print("This command is not available for admin")
@@ -165,10 +165,10 @@ class Stock:
                         print(e)
                         print("Invalid Input")
 
-    def viewOrder(self,user):
+    def viewOrder(self, user):
         print()
         print(self.coloredText("Your order details :",Colors.green))
-        with open('user.json','r') as userFile:
+        with open('user.json', 'r') as userFile:
             userData : dict = json.load(userFile)
             userData : dict = userData[user.getUsername]
             try :
@@ -194,7 +194,7 @@ class Stock:
                 print("You have no order yet...")
 
                 
-    def getNumOrders(self,user) -> int:
+    def getNumOrders(self, user) -> int:
         with open('user.json','r') as userFile:
             userData : dict = json.load(userFile)
             userData : dict = userData[user.getUsername]

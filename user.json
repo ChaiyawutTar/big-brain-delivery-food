@@ -139,5 +139,30 @@
         },
         "telephone": "f",
         "email": "fgaf@gsgsgs"
+    },
+    "chai": {
+        "fname": "chaiwa",
+        "lname": "naty",
+        "admin": false,
+        "password": "theng",
+        "address": {
+            "address": "5/6",
+            "district": "bangkok noi",
+            "province": "ban chang lor",
+            "postalcode": "10700"
+        },
+        "telephone": "0625322677",
+        "email": "chaiyawut.t@ku.th",
+        "orders": [
+            {
+                "orderNo": "212123623440",
+                "dish": [
+                    "Mixed chicken rice"
+                ],
+                "drink": [
+                    "Cola"
+                ]
+            }
+        ]
     }
 }

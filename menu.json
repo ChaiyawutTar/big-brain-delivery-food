@@ -12,7 +12,9 @@
         "bamboo pulp soup": 50,
         "Fried Chicken": 30,
         "Somtum": 35,
-        "Ice Cream": 40
+        "Ice Cream": 40,
+        "Curry": 10,
+        "salad": 10
     },
     "drink": {
         "Chrysanthemum Juice": 20,
@@ -24,6 +26,7 @@
         "Iced Pink Milk": 20,
         "Cola": 15,
         "Green Tea": 30,
-        "Matcha": 35
+        "Matcha": 35,
+        "Grape juice": 10
     }
 }
