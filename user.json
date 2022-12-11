@@ -16,7 +16,7 @@
     "santa": {
         "fname": "",
         "lname": "",
-        "admin": true,
+        "admin": false,
         "password": "santa081831",
         "address": {
             "address": "sa",
@@ -30,7 +30,7 @@
     "santatata": {
         "fname": "",
         "lname": "",
-        "admin": true,
+        "admin": false,
         "password": "asfasfas",
         "address": {
             "address": "fasfas",
@@ -58,7 +58,7 @@
     "a": {
         "fname": "Nontawat",
         "lname": "Dienwieng",
-        "admin": false,
+        "admin": true,
         "password": "a",
         "address": {
             "address": "somewhere",
@@ -68,7 +68,35 @@
         },
         "telephone": "0212312123",
         "email": "whatmail@whatmail.com",
-        "orders": []
+        "orders": [
+            {
+                "orderNo": "101533805291",
+                "dish": [
+                    "Ice Cream"
+                ],
+                "drink": [
+                    "Matcha"
+                ]
+            },
+            {
+                "orderNo": "230755663223",
+                "dish": [
+                    "Roasted Chicken Rice"
+                ],
+                "drink": [
+                    "Longan juice"
+                ]
+            },
+            {
+                "orderNo": "231701556425",
+                "dish": [
+                    "Roasted Chicken Rice"
+                ],
+                "drink": [
+                    "Longan juice"
+                ]
+            }
+        ]
     },
     "bipoe": {
         "fname": "Steveie",
@@ -83,20 +111,50 @@
         },
         "telephone": "",
         "email": "mail@mail.com",
-        "orders": []
+        "orders": [
+            {
+                "orderNo": "221327371724",
+                "dish": [
+                    "Ice Cream"
+                ],
+                "drink": [
+                    "Iced tea"
+                ]
+            },
+            {
+                "orderNo": "221341551029",
+                "dish": [
+                    "Rice with roast duck"
+                ],
+                "drink": [
+                    "Iced black tea"
+                ]
+            }
+        ]
     },
-    "santa0818313336": {
-        "fname": "chaiyawut",
-        "lname": "thengket",
+    "b": {
+        "fname": "b",
+        "lname": "b",
         "admin": false,
-        "password": "santa0899953288",
+        "password": "b",
         "address": {
-            "address": "sa",
-            "district": "fa",
-            "province": "t",
-            "postalcode": "af"
+            "address": "b",
+            "district": "b",
+            "province": "b",
+            "postalcode": "1"
         },
-        "telephone": "sf",
-        "email": "santa081831@gmail.com"
+        "telephone": "1",
+        "email": "b@b",
+        "orders": [
+            {
+                "orderNo": "014316867727",
+                "dish": [
+                    "Mixed chicken rice"
+                ],
+                "drink": [
+                    "Rosella Juice"
+                ]
+            }
+        ]
     }
 }

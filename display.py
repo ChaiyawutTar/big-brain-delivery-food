@@ -1,11 +1,18 @@
 from datetime import datetime
 import json
 import os
+from color import Colors
+from stock import Stock
 import user
 from user import Admin
-from user import Colors
 import turtle
-class Display:
+
+
+
+class Display(Stock):
+
+    def __init__(self) -> None:
+        super().__init__()
 
     def justifyRight(self,text1 : str,text2 : str,length: int = 35):
         text1 = str(text1)
@@ -25,6 +32,10 @@ class Display:
         except:
             return text
     
+    # def run(self):
+    #     self.graphic_interface()
+
+
     def run(self):
         # get user input
         print("Welcome to Big Brain Delivery app")
@@ -56,7 +67,7 @@ class Display:
     def landingPage(self,user : Admin,userDict : dict):
         # to be implemented
         print()
-        print(f"There are {self.getNumOrders(user)} orders pending")
+        print(f"There are {super().getNumOrders(user)} orders pending")
         
         print("While waiting what do want to do?")
         print("  1.View Order")
@@ -65,6 +76,7 @@ class Display:
         if (user.isAdmin):
             user = Admin(userDict)
             print("  4.Shop management")
+            self.graphic_interface(user)
 
         choice = self.choiceSelector(user)
 
@@ -73,26 +85,17 @@ class Display:
             self.landingPage(user,userDict)
 
         elif choice == 2:
-            self.newOrder(user)
+            super().new_order(user)
             self.landingPage(user,userDict)
 
         elif choice == 3:
             self.viewOrder(user)
-            self.cancelOrder(user)
+            super().cancel_order(user)
             self.landingPage(user,userDict)
 
         elif choice == 4:
             user.adminConsole()
     
-    def getNumOrders(self,user : user.User) -> int:
-        with open('user.json','r') as userFile:
-            userData : dict = json.load(userFile)
-            userData : dict = userData[user.getUsername]
-            try :
-                orderData : dict = userData['orders']
-                return len(orderData)
-            except :
-                return 0
 
     def choiceSelector(self,user : user.Admin) -> int:
         choice = ""
@@ -108,162 +111,58 @@ class Display:
             except Exception as e:
                 print(e)
                 print("Please enter a valid intiger")
-        # print("Status :",user1.getStatus)
-
-    def viewOrder(self,user : user.Admin):
-        print()
-        print(self.coloredText("Your order details :",Colors().green))
-        with open('user.json','r') as userFile:
-            userData : dict = json.load(userFile)
-            userData : dict = userData[user.getUsername]
-            try :
-                orderData : dict = userData['orders']
-                if (len(userData['orders']) == 0):
-                    raise "No order"
-                bigCounter = 1
-                for order in orderData:
-                    # print(f"{counter}",end = '.')
-
-                    print(f"  {bigCounter}.Order : {order['orderNo']}")
-                    counter = 1
-                    for dish in order['dish']:
-                        print(f"    {counter}.{dish}")
-                        counter += 1
-                    # counter = 1
-                    for drink in order['drink']:
-                        print(f"    {counter}.{drink}")
-                    
-                    bigCounter += 1
-                # print(orderData)
-            except :
-                print("You have no order yet...")
-
-
-    def newOrder(self,user : user.User):
         
-        if (user.isAdmin):
-            print("This command is not available for admin")
-        else:
-            print("Here are the menu")
-            with open("menu.json") as menuFile:
-                menuJson : dict = json.load(menuFile)
-                dishDict : dict = menuJson['dish']
-                drinkDict : dict = menuJson['drink']
-                dishMenu = dishDict.keys()
-                drinkMenu = drinkDict.keys()
-                # print(menuJson.keys())
-                print("Dish Menu")
-                counter = 1
-                for dish in dishMenu:
-                    print(f"  {counter}.{self.justifyRight(dish,dishDict[dish],45)} Baht")
-                    counter += 1
+    def graphic_interface(self,admin):
+        screen = turtle.Screen()
+        screen.setup(600,600)
+        # username = turtle.textinput("Admin Console Login","Enter admin username")
+        # password = turtle.textinput("Admin Console Login","Enter admin password")
+        # user_form : dict = {
+        #     "username" : username,
+        #     "password" : password
+        # }
 
-                print("\nDrink Menu")
-                counter = 1
-                for drink in drinkMenu:
-                    print(f"  {counter}.{self.justifyRight(drink,drinkDict[drink],45)} Baht")
-                    counter += 1
-
-                print()
-                dishChoose = 0
-                drinkChoose = 0
-                while True:
-                    try:
-                        dishChoose = int(input("Choose your dish : "))
-                        drinkChoose = int(input("Choose your drink : "))
-                        if (dishChoose > len(dishMenu) or drinkChoose > len(drinkMenu)):
-                            raise
-                        # print("Your ")
-                        break
-                    except Exception as e:
-                        print(e)
-                        print("Invalid Input")
-                
-                print()
-
-                selectedDish = list(dishMenu)[dishChoose - 1]
-                selectedDrink = list(drinkMenu)[drinkChoose - 1]
-                print("Your order is now processing...")
-                print("Here are all your orders.")
-                print(f'  1.{selectedDish}')
-                print(f'  2.{selectedDrink}')
-
-                ordersMenu : dict = {'dish':[selectedDish],'drink':[selectedDrink]}
-
-                costDish = dishDict[list(dishMenu)[dishChoose - 1]]
-                costDrink = drinkDict[list(drinkMenu)[drinkChoose - 1]]
-
-                # print(costDish,costDrink)
-                print(f"\nWould be total of {int(costDish)+int(costDrink)} Baht")
-                while True:
-                    try:
-                        confirm : str = input('Confirm? [Y/N] ')
-                        if (confirm.lower().strip() == 'y'):
-                            self.updateOrderStock(user,ordersMenu)
-                            break
-                        else:
-                            #---- Go back to make order again ----#
-                            self.newOrder(user,ordersMenu)
-                        # print("Your ")
-                    except Exception as e:
-                        print(e)
-                        print("Invalid Input")
-
-    def cancelOrder(self,user : user.User):
-        
-        orderData : list = 0
-        reWriteData : dict = 0
-        with open('user.json','r') as userFile:
-            userData : dict = json.load(userFile)
-            reWriteData = userData
-            userData : dict = userData[user.getUsername]
-
-            while True:
-                cancelChoice = input("Choose order you want to cancel : ")
-                try :
-                    orderData : list = userData['orders']
-                    cancelChoice = int(cancelChoice)
-                    if (cancelChoice > len(orderData) or cancelChoice < 0):
-                        raise "Choice out of range" 
-                    
-                    # orderData.remove()
-                    del orderData[cancelChoice - 1]
-                    del reWriteData[user.getUsername]['orders']
-                    reWriteData[user.getUsername].update({"orders":orderData})
-                    # print(orderData)
-                    break
-                except Exception as e:
-                    print("Exception from cancel :",e)
-
-        with open('user.json','w') as userFile:
-            json.dump(reWriteData,userFile,indent=4)
-        
-                
+        titleStyle = ("Arial",30)
+        normalStyle = ("Arial",20)
+        dataStyle = ("Arial",11)
 
 
-    def updateOrderStock(self,user : user.User, ordersMenu : dict):
-        
-        userData : dict = {}
-        with open('user.json','r') as userFile:
-            userData = json.load(userFile)
-            orderDict : dict = {
-                "orderNo":str(datetime.now()).split()[1].replace(":","").replace(".",""),
-                "dish": ordersMenu['dish'],
-                'drink':ordersMenu['drink']
-            }
-            try :
-                userData[user.getUsername]['orders'].append(orderDict)
-            except :
-                userData[user.getUsername].update({
-                    'orders':[orderDict]
-                })
-            # print(userData[user.getUsername]['orders'])
-            # print(userData)
-        
-        with open('user.json','w') as userFile:
-            json.dump(userData,userFile,indent=4)
+        if admin.getStatus == "authorized": # Check if authorized
+            screen.tracer(0)
+            turtle.speed(0)
+            turtle.penup()
+            turtle.goto(80 - 250,230)
+            turtle.write("Big Brain Delivery",font=titleStyle)
+            turtle.goto(40 - 300,200)
+            # turtle.begin_fill()
+            # turtle.fillcolor("light green")
+            # for i in range(2):
+            #     turtle.forward(600 - 80)
+            #     turtle.right(90)
+            #     turtle.forward(600 - 160)
+            #     turtle.right(90)
+            turtle.goto(20 - 300,180)
+            user_items : list = admin.get_user_list
+            user_list : list = []
+            for i in user_items:
+                if not admin.isAdmin(i):
+                    user_list.append(i)
 
+            for i in range(len(list(user_list))):
+                posX = 20 - 300
+                posY = 180 - 60 * i
+                order_list = admin.get_user_order(user_list[i])
+                turtle.goto(posX,posY)
+                order_text = ""
+                turtle.write(user_list[i],font=normalStyle)
+                posY -= 60 * len(order_list)
+                turtle.goto(posX,posY)
+                for i in order_list:
+                    order_text += f"  Order {i['orderNo']}\n"
+                    order_text += f"\t{i['dish'][0]}\n"
+                    order_text += f"\t{i['drink'][0]}\n"
+                turtle.write(order_text,font=dataStyle)
+            # turtle.end_fill()
 
+        turtle.exitonclick()
 
-    def initTurtle(self):
-        pass
