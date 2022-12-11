@@ -103,3 +103,6 @@ if you are user, you have 3 choices.
 ### class Color
     greenText(text) -> change colors in terminal.
     coloredText(text,color) -> Displays text that changes color.
+
+
+

@@ -16,7 +16,6 @@
     "Iced black tea": 20,
     "Iced tea": 20,
     "Iced Pink Milk": 20,
-    "Salad": 5,
     "Fried Chicken": 20,
     "Green Tea": 12,
     "Somtum": 20,
@@ -24,8 +23,5 @@
     "Cola": 20,
     "Matcha": 35,
     "Curry rice": 50,
-    "Curry": 10,
-    "kit kat": 0,
-    "Grape juice": 15,
-    "salad": 0
+    "kit kat": 10
 }

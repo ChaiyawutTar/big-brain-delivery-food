@@ -152,17 +152,6 @@
             "postalcode": "10700"
         },
         "telephone": "0625322677",
-        "email": "chaiyawut.t@ku.th",
-        "orders": [
-            {
-                "orderNo": "212123623440",
-                "dish": [
-                    "Mixed chicken rice"
-                ],
-                "drink": [
-                    "Cola"
-                ]
-            }
-        ]
+        "email": "chaiyawut.t@ku.th"
     }
 }
