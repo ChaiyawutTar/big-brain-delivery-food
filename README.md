@@ -55,12 +55,40 @@ fifth -> 5.Order management
 - os
 - datetime
 - Colors
-## Program Design
-Each class has its function.
-class stock -> this class is about order for sub class.
+## Program Design and Code Structure
+
+### class stock 
+    this class is about order for sub class.
     update_stock() -> update stock dump files to stock.json.
     update_order_stock(user, ordersMenu) -> update order of each user.
     cancel_order(user) -> cancel order of each user.
     deliver_order(user) -> in order mangment, if click to Deliver, this methods will remove order in system and sent to user.
-    new_order
-## Code Structure
+    new_order(user) -> add new order of each user.
+    viewOrder(user) -> show order.
+    getNumOrders(user) -> get number of order.
+
+### class Display(Stock)
+    justifyRight(text1,text2,length) -> setting order format.
+    greenText(text) -> change colors in terminal.
+    coloredText(text,color) -> Displays text that changes color.
+    run() -> running the program
+    landingPage(user,userDict) - > setting terminal condition of each choices.
+    choiceSelector(user) -> raise error choices.
+    n_click(x,y) -> bottom in turtle.
+    graphic_interface(admin) -> Display phython graphics.
+
+### class User(Stock)
+    login(userDict) -> login console.
+    register() -> user register.
+    new_user_add(new_data) -> keep new user data to file user.json
+
+### class Admin(User)
+    justifyRight(text1,text2,length) -> setting order format.
+    autoShopStatus(self) -> setting date time to open or close program.
+    get_user_order(user) -> get order each user in list.
+    isAdmin(user) -> check user who login to customer or admin.
+    adminConsole() -> console of admin.
+
+### class Color
+    greenText(text) -> change colors in terminal.
+    coloredText(text,color) -> Displays text that changes color.
